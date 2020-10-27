@@ -5,23 +5,19 @@ import time
 import unittest
 
 #import other modules
-from Testcases.BaseTest import BaseTest
-from Testdata.Data import PageData,StandardUser,InvalidLoginMessage,FakeUser
-from Pages.LoginPage import LoginPage
-from Pages.ProductListPage import ProductListPage
-from Objects.Account import Account
-from Locators.LoginPageLocators import LoginPageLocators
-from Locators.ProductListPageLocators import ProductListPageLocators
+from testcases.base_test import BaseTest
+from testdata.data import PageData,StandardUser,InvalidLoginMessage,FakeUser
+from pages.login_page import LoginPage
+from pages.product_list_page import ProductListPage
+from objects.account import Account
+from locators.login_locators import LoginLocators
+from locators.product_list_locators import ProductListLocators
 
 class LoginInvalid(BaseTest):
   @classmethod
   def setUp(self):
     super().setUp()
     self.login_page = LoginPage(self.driver)
-    # self.result_page = ProductListPage(self.driver)
-    self.user = Account('','')
-    # self.assertTrue(self.login_page.check_title(LoginData.PAGE_TITLE))
-    print('hi Tien')
 
   def test_login_blank(self):
     # self.assertTrue(self.login_page.check_title(LoginData.PAGE_TITLE))
@@ -71,7 +67,7 @@ class LoginInvalid(BaseTest):
     login_result = self.login_page.get_message()
     self.assertIn(InvalidLoginMessage.INVALID_USER_MESSAGE, login_result)
 
-  '''def test_login_banned_user(self):
+  '''def test_login_lockedout_user(self):
     self.user = Account(LoginData.BANNED_USER.get('username'), LoginData.BANNED_USER.get('password'))
     # self.assertTrue(self.login_page.check_title(LoginData.PAGE_TITLE))
     self.login_page.login(self.user)

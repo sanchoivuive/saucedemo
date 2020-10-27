@@ -4,9 +4,9 @@ sys.path.append('.')
 import time
 import unittest
 
-from Testcases.BaseTest import BaseTest
-from Pages.BasePage import BasePage
-from Pages.ProductListPage import ProductListPage
+from testcases.base_test import BaseTest
+from pages.base_page import BasePage
+from pages.product_list_page import ProductListPage
 
 class AddCart(BaseTest):
   @classmethod

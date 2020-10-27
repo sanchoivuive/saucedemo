@@ -1,6 +1,6 @@
-from Pages.BasePage import BasePage
-from Locators.LoginPageLocators import LoginPageLocators
-from Testdata.Data import PageData
+from pages.base_page import BasePage
+from locators.login_locators import LoginLocators
+from testdata.data import PageData
 
 class LoginPage(BasePage):
   def __init__(self,driver):
@@ -9,18 +9,18 @@ class LoginPage(BasePage):
     self.get_title()
 
   def login(self, user):
-    self.enter_text(LoginPageLocators.INPUT_USERNAME, user.username)
-    self.enter_text(LoginPageLocators.INPUT_PASSWORD, user.password)
-    self.click(LoginPageLocators.BUTTON_LOGIN)
+    self.enter_text(LoginLocators.INPUT_USERNAME, user.username)
+    self.enter_text(LoginLocators.INPUT_PASSWORD, user.password)
+    self.click(LoginLocators.BUTTON_LOGIN)
 
   def enter_username(self,username):
-    self.enter_text(LoginPageLocators.INPUT_USERNAME, username)
+    self.enter_text(LoginLocators.INPUT_USERNAME, username)
 
   def enter_password(self,password):
-    self.enter_text(LoginPageLocators.INPUT_PASSWORD, password)
+    self.enter_text(LoginLocators.INPUT_PASSWORD, password)
 
   def click_button_login(self):
-    self.click(LoginPageLocators.BUTTON_LOGIN)
+    self.click(LoginLocators.BUTTON_LOGIN)
 
   def get_message(self):
-    return self.get_text(LoginPageLocators.LABEL_MESSAGE)
+    return self.get_text(LoginLocators.LABEL_MESSAGE)

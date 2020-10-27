@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 
-class ProductListPageLocators(object):
+class ProductListLocators(object):
   BROKEN_IMAGE = (By.XPATH, '//img[contains(@src, "jpgWithGarbageOnItToBreakTheUrl")]')
   CART_ITEM = "//div[@class='inventory_list']/div[@class='inventory_item']["
 
@@ -22,24 +22,24 @@ class ProductListPageLocators(object):
   #casch khasc
   def LABEL_PRODUCT_NAME(idx=1):
     ITEM = "]//div[@class='inventory_item_name']"
-    return (By.XPATH, (ProductListPageLocators.CART_ITEM) + str(idx) +ITEM)
+    return (By.XPATH, (ProductListLocators.CART_ITEM) + str(idx) +ITEM)
 
   def LABEL_PRODUCT_DESC(idx=1):
     ITEM = "]//div[@class='inventory_item_desc']"
-    return (By.XPATH, (ProductListPageLocators.CART_ITEM) + str(idx) +ITEM)
+    return (By.XPATH, (ProductListLocators.CART_ITEM) + str(idx) +ITEM)
 
   def LABEL_PRODUCT_PRICE(idx=1):
     ITEM = "]//div[@class='inventory_item_price']"
-    return (By.XPATH, (ProductListPageLocators.CART_ITEM) + str(idx) +ITEM)
+    return (By.XPATH, (ProductListLocators.CART_ITEM) + str(idx) +ITEM)
 
   def LABEL_PRODUCT_IMG(idx=1):
     ITEM = "]//div[@class='inventory_item_img']//img"
-    return (By.XPATH, (ProductListPageLocators.CART_ITEM) + str(idx) +ITEM)
+    return (By.XPATH, (ProductListLocators.CART_ITEM) + str(idx) +ITEM)
 
   def LABEL_BUTTON_ADD(idx=1):
     ITEM = "]//button[text()='ADD TO CART']"
-    return (By.XPATH, (ProductListPageLocators.CART_ITEM) + str(idx) + ITEM)
+    return (By.XPATH, (ProductListLocators.CART_ITEM) + str(idx) + ITEM)
 
   def LABEL_BUTTON_REMOVE(idx=1):
     ITEM = "]//button[text()='REMOVE']"
-    return (By.XPATH, (ProductListPageLocators.CART_ITEM) + str(idx) + ITEM)
+    return (By.XPATH, (ProductListLocators.CART_ITEM) + str(idx) + ITEM)

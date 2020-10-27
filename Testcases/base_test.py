@@ -1,13 +1,6 @@
 import os
 import unittest
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-import time
-from Testdata import Data
-from Objects import Account
-
-
-# from Locators import Locators
 
 class BaseTest(unittest.TestCase):
 
@@ -50,7 +43,3 @@ class BaseTest(unittest.TestCase):
       # self.driver.quit()
     except Exception as msg:
       print('error occur at:', str(msg))
-
-  # def getAccount(self):
-  #   self.username = Account.username
-  #   self.password = Account.password
