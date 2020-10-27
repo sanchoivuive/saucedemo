@@ -1,6 +1,8 @@
 class Item():
-  def __init__(self,name,imgUrl,description,price):
-    self.imgUrl = imgUrl
+  def __init__(self,name,desc,price,imgUrl,add,remove):
+    self.img_url = imgUrl
     self.name = name
-    self.description = description
+    self.desc = desc
     self.price = price
+    self.button_add = add
+    self.button_remove = remove

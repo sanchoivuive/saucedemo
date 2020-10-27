@@ -15,8 +15,8 @@ class BaseTest(unittest.TestCase):
   def setUp(self):
     browser = self.get_browser()
     self.driver = self.start_browser(browser)
-    # self.driver.maximize_window()
-
+    self.driver.maximize_window()
+    # self.driver.find_elements()
   def get_browser():
     try:
       return os.environ['BROWSER']
