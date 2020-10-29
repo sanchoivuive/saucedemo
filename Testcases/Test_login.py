@@ -32,22 +32,19 @@ class Login(BaseTest):
 
     #Action login to page
     user = Account(StandardUser.USERNAME, StandardUser.PASSWORD)
-    print('user la',user.username)
+    print('user dang login la',user.username)
     login_page.login(user)
 
-    # check the right title, url of result page
-    product_page = ProductListPage(self.driver)
-    self.assertIn('Swag Labs',product_page.get_title())
-    loggedin_url = 'https://www.saucedemo.com/inventory.html'
-    self.assertEqual(loggedin_url,product_page.get_url())
+    # check the right title, url after login successful
+    product_list_page = ProductListPage(self.driver)
+    self.assertIn('Swag Labs',product_list_page.get_title())
+    self.assertEqual(PageData.PRODUCT_LIST_URL,product_list_page.get_url())
 
-    # print('element size',product_page.get_broken_img())
-    # self.assertEqual(0, product_page.get_broken_img(),'\n actual: %i \n expected: 0' %(product_page.get_broken_img()))
-    list_products = []
-    for i in range (1,7):
-      product = product_page.get_product_info(i)
-      list_products.append(product.__str__())
-    print(list_products)
+    #check the hamburger button exist
+    self.assertTrue(product_list_page.check_cart_exist())
+
+    #check the visible of cart
+    self.assertTrue(product_list_page.check_menu_hamburger_exist())
 
   @classmethod
   def tearDown(self):

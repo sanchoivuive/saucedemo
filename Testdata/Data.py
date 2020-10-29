@@ -1,6 +1,7 @@
 class PageData():
   BASE_URL = 'https://www.saucedemo.com'
   PAGE_TITLE = 'Swag Labs'
+  PRODUCT_LIST_URL = 'https://www.saucedemo.com/inventory.html'
 
 class StandardUser():
   USERNAME = 'standard_user'

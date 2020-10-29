@@ -1,5 +1,6 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import logging
 
 class BasePage(object):
   def __init__(self, driver):
@@ -15,13 +16,6 @@ class BasePage(object):
 
   def get_url(self):
     return self.driver.current_url
-
-  # def verify_title(self, expected_title):
-  #   # return title in self.get_title()
-  #   try:
-  #     return WebDriverWait(self.driver, self.timeout).until(EC.title_contains(expected_title))
-  #   except self.timeout as e:
-  #     print('error occur at:', str(e))
 
   # Common inspect elements on a page
   def click(self, locator):
@@ -40,3 +34,24 @@ class BasePage(object):
     WebDriverWait(self.driver, self.timeout).until(EC.visibility_of_element_located(locator))
     elements = self.driver.find_elements(*locator)
     return len(elements)
+
+  def is_visible(self,locator):
+    element = WebDriverWait(self.driver, self.timeout).until(
+      EC.visibility_of_element_located(locator))
+    # print(element.is_displayed())
+    return bool(element.is_displayed())
+
+  def is_enabled(self, by_locator):
+    message = "Check the element with the locator '{}' is enabled or not"
+    logging.info(message.format(','.join(by_locator)))
+
+    element = WebDriverWait(self.driver, self.timeout).until(EC.visibility_of_element_located(by_locator))
+    return element.is_enabled()
+
+  def is_element_existed(self,locator):
+    existed = True
+    try:
+      WebDriverWait(self.driver, self.timeout).until(EC.visibility_of_element_located(locator))
+    except Exception:
+      existed = False
+    return existed
