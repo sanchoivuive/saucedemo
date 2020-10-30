@@ -10,6 +10,9 @@ class ProductListPage(BasePage):
   def get_broken_img(self):
     return self.get_elements_size(ProductListLocators.BROKEN_IMAGE)
 
+  def get_list_products(self):
+    return self.get_elements_size(ProductListLocators.CART_ITEM1)
+
   def add_to_cart(self,index):
     self.click(ProductListLocators.LABEL_BUTTON_ADD(index))
 
@@ -41,3 +44,14 @@ class ProductListPage(BasePage):
 
   def check_menu_hamburger_exist(self):
     return self.is_visible(ProductListLocators.MENU_HAMBURGER)
+
+  def compare_list_products(self,expected,actual):
+    lists_are_identical = False
+    if len(expected) != len(actual):
+      return lists_are_identical
+    else:
+      for i in range(len(expected)):
+        (expected[i].name in actual[i].name) and (expected[i].desc in actual[i].desc) and (expected[i].price in actual[i]
+         .price)
+      lists_are_identical = True
+      return lists_are_identical

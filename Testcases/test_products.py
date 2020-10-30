@@ -4,7 +4,7 @@ import sys
 sys.path.append('.')
 import time
 import unittest
-from collections import namedtuple
+
 # import other modules
 from testcases.base_test import BaseTest
 from pages.product_list_page import ProductListPage
@@ -21,45 +21,49 @@ class TestProducts(BaseTest):
   def setUp(self):
     super().setUp()
 
-  def test_product_exist(self):
+  @unittest.skip("no reason for skipping")
+  def test_list_products(self):
     product_list_page = ProductListPage(self.driver)
     product_list_page.navigate_url(PageData.PRODUCT_LIST_URL)
     actual_products = []
-    expected_products = []
 
-    for i in range(1, 7):
+    #get list actual products
+    no_of_products = product_list_page.get_list_products()
+    for i in range(1, no_of_products + 1):
       product = product_list_page.get_product_info(i)
+      actual_products.append(product)
+
+    # get list expected products
+    path = ('..\\testdata\\listProducts.json')
+    expected_products = JsonServices.json_to_list_object(path,'products','Product')
+
+    # parse to object Product type
+    new_list = []
+    for i in range(len(expected_products)):
+      product = Product(expected_products[i].name,expected_products[i].desc,expected_products[i].price)
+      new_list.append(product)
+    expected_products = new_list
+
+    #compare 2 lists
+    is_lists_identical = product_list_page.compare_list_products(expected_products,actual_products)
+    self.assertTrue(is_lists_identical)
+
+  def test_add_remove_product(self):
+    product_list_page = ProductListPage(self.driver)
+    product_list_page.navigate_url(PageData.PRODUCT_LIST_URL)
+    actual_products = []
+
+    # get list actual products
+    no_of_products = product_list_page.get_list_products()
+
+    for i in range(1, no_of_products + 1):
       self.assertTrue('ADD TO CART', product_list_page.check_button_add_exist(i))
       product_list_page.add_to_cart(i)
       self.assertTrue('REMOVE', product_list_page.check_button_remove_exist(i))
       amount_in_cart = product_list_page.get_product_badge()
-      # print('so luong -->', amount_in_cart)
       self.assertEqual(1, amount_in_cart)
       product_list_page.remove_from_cart(i)
       self.assertTrue('ADD TO CART', product_list_page.check_button_add_exist(i))
-      actual_products.append(product)
-
-    print('actual', actual_products)
-    print(type(actual_products))
-    print('actual produc name',actual_products[1].name)
-    print('actual produc quantity', actual_products[1].quantity)
-
-    path = ('..\\testdata\\listProducts.json')
-    expected_products = JsonServices.json_to_list_object(path,'products','Product')
-    print('expected',expected_products)
-    print(type(expected_products))
-    print(type(expected_products[1]))
-
-    newlist = []
-    for i in range(len(expected_products)):
-      a = Product(expected_products[i].name,expected_products[i].desc,expected_products[i].price)
-      newlist.append(a)
-    print('a',newlist)
-    print('name',newlist[1].name)
-    print('quantity', newlist[1].quantity)
-
-
-
 
   @classmethod
   def tearDown(self):
