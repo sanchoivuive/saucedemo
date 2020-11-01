@@ -11,6 +11,8 @@ from pages.product_list_page import ProductListPage
 from testdata.data import PageData
 from utils.json_services import JsonServices
 from objects.product import Product
+from testdata.test_data import TestData
+from utils.assertion import Assertion
 
 #get the directory path to output report file
 dir = os.getcwd()
@@ -20,6 +22,26 @@ class TestProducts(BaseTest):
   @classmethod
   def setUp(self):
     super().setUp()
+
+  #bai giai o lop
+  def test_product_display_correctly(self):
+    product_page = ProductListPage(self.driver)
+    product_page.navigate_url(PageData.PRODUCT_LIST_URL)
+    products = TestData.getProducts(self)
+    for index,expected_product in enumerate(products, start=1):
+      #add & remove all product
+      product_page.add_to_cart(index)
+      self.assertTrue(product_page.check_button_remove_exist(index))
+      self.assertEqual(1,product_page.get_product_badge())
+
+      product_page.remove_from_cart(index)
+      self.assertTrue(product_page.check_button_add_exist(index))
+      self.assertTrue(product_page.is_product_badge_invisible())
+
+      assertion = Assertion()
+      actual_product = product_page.get_product_info(index)
+      assertion.compare_products(actual_product, expected_product)
+
 
   @unittest.skip("no reason for skipping")
   def test_list_products(self):
@@ -48,6 +70,7 @@ class TestProducts(BaseTest):
     is_lists_identical = product_list_page.compare_list_products(expected_products,actual_products)
     self.assertTrue(is_lists_identical)
 
+  @unittest.skip("no reason for skipping")
   def test_add_remove_product(self):
     product_list_page = ProductListPage(self.driver)
     product_list_page.navigate_url(PageData.PRODUCT_LIST_URL)
@@ -64,6 +87,8 @@ class TestProducts(BaseTest):
       self.assertEqual(1, amount_in_cart)
       product_list_page.remove_from_cart(i)
       self.assertTrue('ADD TO CART', product_list_page.check_button_add_exist(i))
+
+
 
   @classmethod
   def tearDown(self):

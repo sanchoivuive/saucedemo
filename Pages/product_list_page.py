@@ -55,3 +55,10 @@ class ProductListPage(BasePage):
          .price)
       lists_are_identical = True
       return lists_are_identical
+
+  def is_product_badge_invisible(self):
+    return self.is_invisible(ProductListLocators.CART_AMOUNT)
+
+  def click_product_badge_icon(self):
+    return self.click(ProductListLocators.CART_ICON)
+

@@ -6,17 +6,18 @@ class CartPage(BasePage):
   def __init__(self, driver):
     super().__init__(driver)
 
-  def get_cart_products(self):
-    return self.get_elements_size(CartLocators.CART_ITEM)
+  def get_product_info(self,index):
+    name = self.get_text(CartLocators.LABEL_PRODUCT_NAME(index))
+    desc = self.get_text(CartLocators.LABEL_PRODUCT_DESC(index))
+    price = self.get_text(CartLocators.LABEL_PRODUCT_PRICE(index))
+    quantity = self.get_text(CartLocators.LABEL_PRODUCT_QUANTITY(index))
+    return Product(name, desc, price, quantity)
 
-  def remove_from_cart(self,index):
+  def remove_from_cart(self, index):
     self.click(CartLocators.LABEL_BUTTON_REMOVE(index))
 
-  def get_cart_amount_badge(self):
-    total = 0
-    try:
-      total = self.get_text(CartLocators.CART_AMOUNT)
-    except Exception as identifier:
-      print('err at',str(identifier))
-    return int(total)
+  def click_checkout_cart(self):
+    self.click(CartLocators.BUTTON_CHECKOUT)
 
+  def click_continue_shopping(self):
+    self.click(CartLocators.BUTTON_CONTINUE_SHOPPING)

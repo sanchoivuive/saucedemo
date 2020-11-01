@@ -55,3 +55,17 @@ class BasePage(object):
     except Exception:
       existed = False
     return existed
+
+  def is_invisible(self, by_locator):
+    message = "Check the element with the locator '{}' is visible or not"
+    logging.info(message.format(','.join(by_locator)))
+
+    flag = False
+    try:
+      element = self.driver.find_element(by_locator)
+      element.is_displayed()
+    except:
+      flag = True
+      pass
+
+    return flag
