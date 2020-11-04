@@ -2,6 +2,13 @@ class PageData():
   BASE_URL = 'https://www.saucedemo.com'
   PAGE_TITLE = 'Swag Labs'
   PRODUCT_LIST_URL = 'https://www.saucedemo.com/inventory.html'
+  CART_URL = 'https://www.saucedemo.com/cart.html'
+  PAYMENT_INFO_URL = 'https://www.saucedemo.com/checkout-step-one.html'
+
+class PaymentInfoData():
+  FIRSTNAME = 'Hello'
+  LASTNAME = 'World'
+  ZIPCODE = 99501
 
 class StandardUser():
   USERNAME = 'standard_user'
@@ -43,3 +50,4 @@ class ItemInfo():
   IMG_URL = 'https://www.saucedemo.com/img/sauce-backpack-1200x1500.jpg'
   BUTTON_ADD = 'ADD TO CART'
   BUTTON_REMOVE = 'REMOVE'
+
