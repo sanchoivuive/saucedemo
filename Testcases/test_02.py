@@ -5,6 +5,7 @@ from pages.cart_page import CartPage
 from objects.account import Account
 from pages.login_page import LoginPage
 from pages.payment_info_page import PaymentInfoPage
+from pages.checkout_page import CheckoutPage
 from testdata.data import StandardUser,PageData,PaymentInfoData
 from utils.assertion import Assertion
 from testdata.test_data import TestData
@@ -60,6 +61,8 @@ class Test02(BaseTest):
       assertion = Assertion()
       assertion.compare_products(actual_product, expected_product)
 
+
+
   @unittest.skip("no reason for skipping")
   def test_products_in_cart2(self):
     product_page = ProductListPage(self.driver)
@@ -107,6 +110,15 @@ class Test02(BaseTest):
     payment_info_page.input_payment_info(payment_info)
     payment_info_page.click_continue_checkout()
 
+    checkout_page = CheckoutPage(self.driver)
+    # checkout_page.get_product_info()
+    item_price = checkout_page.get_item_price()
+    print('Lay gia',item_price )
+    tax = checkout_page.get_tax()
+    total = checkout_page.get_total()
+    calculate_total = checkout_page.calculate_the_price(item_price,tax,total)
+    self.assertTrue(calculate_total)
+    checkout_page.click_finish_button()
 
 
 if __name__ == '__main__':
