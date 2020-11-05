@@ -1,4 +1,4 @@
 from selenium.webdriver.common.by import By
 
-class CheckoutLocators(object):
+class FinishLocators(object):
   HEADER_TITLE = '//*[@id="contents_wrapper"]/div[@class="subheader"]'

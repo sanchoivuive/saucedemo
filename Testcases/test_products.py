@@ -6,13 +6,13 @@ import time
 import unittest
 
 # import other modules
-from testcases.base_test import BaseTest
-from pages.product_list_page import ProductListPage
-from testdata.data import PageData
-from utils.json_services import JsonServices
-from objects.product import Product
-from testdata.test_data import TestData
-from utils.assertion import Assertion
+from Testcases.base_test import BaseTest
+from Pages.product_list_page import ProductListPage
+from Testdata.data import PageData
+from Utils.json_services import JsonServices
+from Objects.product import Product
+from Testdata.test_data import TestData
+from Utils.assertion import Assertion
 
 #get the directory path to output report file
 dir = os.getcwd()

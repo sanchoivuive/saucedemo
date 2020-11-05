@@ -1,8 +1,8 @@
 
-from pages.base_page import BasePage
-from locators.checkout_locators import CheckoutLocators
-from objects.product import Product
-from utils.string_to_number import StringToNumber
+from Pages.base_page import BasePage
+from Locators.checkout_locators import CheckoutLocators
+from Objects.product import Product
+from Utils.string_to_number import StringToNumber
 class CheckoutPage(BasePage):
   def __init__(self, driver):
     super().__init__(driver)

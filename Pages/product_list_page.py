@@ -1,6 +1,6 @@
-from pages.base_page import BasePage
-from locators.product_list_locators import ProductListLocators
-from objects.product import Product
+from Pages.base_page import BasePage
+from Locators.product_list_locators import ProductListLocators
+from Objects.product import Product
 
 
 class ProductListPage(BasePage):

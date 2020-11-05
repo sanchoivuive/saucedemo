@@ -1,5 +1,5 @@
-from pages.base_page import BasePage
-from locators.payment_info_locators import PaymentInfoLocators
+from Pages.base_page import BasePage
+from Locators.payment_info_locators import PaymentInfoLocators
 
 class PaymentInfoPage(BasePage):
   def get_header_title(self):

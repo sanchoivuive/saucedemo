@@ -9,7 +9,7 @@ class CheckoutLocators(object):
   LABEL_TAX = (By.XPATH,'//div[@class="summary_info"]/div[@class="summary_tax_label"]')
   LABEL_TOTAL = (By.XPATH,'//div[@class="summary_info"]/div[@class="summary_total_label"]')
 
-  BUTTON_CACEL = (By.XPATH, '//div[@class="cart_footer"]/a[text()="CANCEL"]')
+  BUTTON_CANCEL = (By.XPATH, '//div[@class="cart_footer"]/a[text()="CANCEL"]')
   BUTTON_FINISH = (By.XPATH, '//div[@class="cart_footer"]/a[text()="FINISH"]')
 
   def LABEL_PRODUCT_NAME(index):

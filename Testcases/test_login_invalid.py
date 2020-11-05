@@ -5,13 +5,13 @@ import time
 import unittest
 
 #import other modules
-from testcases.base_test import BaseTest
-from testdata.data import PageData,StandardUser,InvalidLoginMessage,FakeUser
-from pages.login_page import LoginPage
-from pages.product_list_page import ProductListPage
-from objects.account import Account
-from locators.login_locators import LoginLocators
-from locators.product_list_locators import ProductListLocators
+from Testcases.base_test import BaseTest
+from Testdata.data import PageData,StandardUser,InvalidLoginMessage,FakeUser
+from Pages.login_page import LoginPage
+from Pages.product_list_page import ProductListPage
+from Objects.account import Account
+from Locators.login_locators import LoginLocators
+from Locators.product_list_locators import ProductListLocators
 
 class LoginInvalid(BaseTest):
   @classmethod

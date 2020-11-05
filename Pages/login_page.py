@@ -1,6 +1,6 @@
-from pages.base_page import BasePage
-from locators.login_locators import LoginLocators
-from testdata.data import PageData
+from Pages.base_page import BasePage
+from Locators.login_locators import LoginLocators
+from Testdata.data import PageData
 
 class LoginPage(BasePage):
   def __init__(self,driver):

@@ -1,6 +1,6 @@
-from pages.base_page import BasePage
-from locators.cart_locators import CartLocators
-from objects.product import Product
+from Pages.base_page import BasePage
+from Locators.cart_locators import CartLocators
+from Objects.product import Product
 
 class CartPage(BasePage):
   def __init__(self, driver):
