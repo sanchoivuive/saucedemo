@@ -1,17 +1,14 @@
-#system, driver modules
+# system, driver modules
 import sys
+
 sys.path.append('.')
-import time
 import unittest
 
-#import other modules
+# import other modules
 from Testcases.base_test import BaseTest
-from Testdata.data import PageData,StandardUser,InvalidLoginMessage,FakeUser
+from Testdata.data import PageData, StandardUser, InvalidLoginMessage, FakeUser
 from Pages.login_page import LoginPage
-from Pages.product_list_page import ProductListPage
-from Objects.account import Account
-from Locators.login_locators import LoginLocators
-from Locators.product_list_locators import ProductListLocators
+
 
 class LoginInvalid(BaseTest):
   @classmethod
@@ -26,20 +23,20 @@ class LoginInvalid(BaseTest):
     # print('da confirm co title',access_result)
     self.login_page.click_button_login()
     login_result = self.login_page.get_message()
-    self.assertIn(InvalidLoginMessage.USERNAME_REQUIRED_MESSAGE,login_result)
+    self.assertIn(InvalidLoginMessage.USERNAME_REQUIRED_MESSAGE, login_result)
 
   def test_login_blank_username(self):
-    #verify successfully access login page
+    # verify successfully access login page
     self.assertTrue(self.login_page.verify_title(PageData.PAGE_TITLE))
 
-    #Action log in here
+    # Action log in here
     self.login_page.enter_password(StandardUser.PASSWORD)
     self.login_page.login(self.user)
 
-    #verify log in unsuccessfuly
+    # verify log in unsuccessfuly
     login_result = self.login_page.get_message()
     print('mess la blank USERNAME là', self.login_page.get_message())
-    self.assertIn(InvalidLoginMessage.USERNAME_REQUIRED_MESSAGE,login_result)
+    self.assertIn(InvalidLoginMessage.USERNAME_REQUIRED_MESSAGE, login_result)
 
   def test_login_blank_password(self):
     # verify successfully access login page
@@ -51,7 +48,7 @@ class LoginInvalid(BaseTest):
 
     # verify log in unsuccessfuly
     login_result = self.login_page.get_message()
-    self.assertIn(InvalidLoginMessage.PASSWORD_REQUIRED_MESSAGE,login_result)
+    self.assertIn(InvalidLoginMessage.PASSWORD_REQUIRED_MESSAGE, login_result)
 
   def test_login_invalid_user(self):
     # verify successfully access login page
@@ -87,6 +84,7 @@ class LoginInvalid(BaseTest):
   @classmethod
   def tearDown(self):
     super().tearDown()
+
 
 if __name__ == '__main__':
   unittest.main()

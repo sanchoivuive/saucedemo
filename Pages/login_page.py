@@ -1,9 +1,10 @@
-from Pages.base_page import BasePage
 from Locators.login_locators import LoginLocators
+from Pages.base_page import BasePage
 from Testdata.data import PageData
 
+
 class LoginPage(BasePage):
-  def __init__(self,driver):
+  def __init__(self, driver):
     super().__init__(driver)
     self.navigate_url(PageData.BASE_URL)
     self.get_title()
@@ -13,10 +14,10 @@ class LoginPage(BasePage):
     self.enter_text(LoginLocators.INPUT_PASSWORD, user.password)
     self.click(LoginLocators.BUTTON_LOGIN)
 
-  def enter_username(self,username):
+  def enter_username(self, username):
     self.enter_text(LoginLocators.INPUT_USERNAME, username)
 
-  def enter_password(self,password):
+  def enter_password(self, password):
     self.enter_text(LoginLocators.INPUT_PASSWORD, password)
 
   def click_button_login(self):

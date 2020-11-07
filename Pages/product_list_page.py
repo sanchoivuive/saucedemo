@@ -1,6 +1,6 @@
-from Pages.base_page import BasePage
 from Locators.product_list_locators import ProductListLocators
 from Objects.product import Product
+from Pages.base_page import BasePage
 
 
 class ProductListPage(BasePage):
@@ -13,16 +13,16 @@ class ProductListPage(BasePage):
   def get_list_products(self):
     return self.get_elements_size(ProductListLocators.CART_ITEM1)
 
-  def add_to_cart(self,index):
+  def add_to_cart(self, index):
     self.click(ProductListLocators.LABEL_BUTTON_ADD(index))
 
-  def remove_from_cart(self,index):
+  def remove_from_cart(self, index):
     self.click(ProductListLocators.LABEL_BUTTON_REMOVE(index))
 
-  def check_button_add_exist(self,index):
+  def check_button_add_exist(self, index):
     return self.get_text(ProductListLocators.LABEL_BUTTON_ADD(index))
 
-  def check_button_remove_exist(self,index):
+  def check_button_remove_exist(self, index):
     return self.is_visible(ProductListLocators.LABEL_BUTTON_REMOVE(index))
 
   def get_product_badge(self):
@@ -30,14 +30,14 @@ class ProductListPage(BasePage):
     try:
       total = self.get_text(ProductListLocators.CART_AMOUNT)
     except Exception as identifier:
-      print('err at',str(identifier))
+      print('err at', str(identifier))
     return int(total)
 
-  def get_product_info(self,index):
+  def get_product_info(self, index):
     name = self.get_text(ProductListLocators.LABEL_PRODUCT_NAME(index))
     desc = self.get_text(ProductListLocators.LABEL_PRODUCT_DESC(index))
     price = self.get_text(ProductListLocators.LABEL_PRODUCT_PRICE(index))
-    return Product(name,desc,price)
+    return Product(name, desc, price)
 
   def check_cart_exist(self):
     return self.is_visible(ProductListLocators.CART_ICON)
@@ -45,14 +45,15 @@ class ProductListPage(BasePage):
   def check_menu_hamburger_exist(self):
     return self.is_visible(ProductListLocators.MENU_HAMBURGER)
 
-  def compare_list_products(self,expected,actual):
+  def compare_list_products(self, expected, actual):
     lists_are_identical = False
     if len(expected) != len(actual):
       return lists_are_identical
     else:
       for i in range(len(expected)):
-        (expected[i].name in actual[i].name) and (expected[i].desc in actual[i].desc) and (expected[i].price in actual[i]
-         .price)
+        (expected[i].name in actual[i].name) and (expected[i].desc in actual[i].desc) and (
+            expected[i].price in actual[i]
+            .price)
       lists_are_identical = True
       return lists_are_identical
 
@@ -61,4 +62,3 @@ class ProductListPage(BasePage):
 
   def click_product_badge_icon(self):
     return self.click(ProductListLocators.CART_ICON)
-

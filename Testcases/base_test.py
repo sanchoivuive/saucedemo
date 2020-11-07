@@ -1,6 +1,8 @@
 import os
 import unittest
+
 from selenium import webdriver
+
 
 class BaseTest(unittest.TestCase):
 
@@ -10,6 +12,7 @@ class BaseTest(unittest.TestCase):
     self.driver = self.start_browser(browser)
     self.driver.maximize_window()
     # self.driver.find_elements()
+
   def get_browser():
     try:
       return os.environ['BROWSER']

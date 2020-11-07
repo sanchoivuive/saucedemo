@@ -1,5 +1,8 @@
 import json
-from objects.product import Product
+
+from Objects.product import Product
+
+
 class TestData():
   FILE = 'testdata\\listProducts.json'
 

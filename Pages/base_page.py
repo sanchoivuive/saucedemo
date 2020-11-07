@@ -1,6 +1,8 @@
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 import logging
+
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+
 
 class BasePage(object):
   def __init__(self, driver):
@@ -30,12 +32,12 @@ class BasePage(object):
     element = WebDriverWait(self.driver, self.timeout).until(EC.visibility_of_element_located(locator))
     return element.text
 
-  def get_elements_size(self,locator):
+  def get_elements_size(self, locator):
     WebDriverWait(self.driver, self.timeout).until(EC.visibility_of_element_located(locator))
     elements = self.driver.find_elements(*locator)
     return len(elements)
 
-  def is_visible(self,locator):
+  def is_visible(self, locator):
     element = WebDriverWait(self.driver, self.timeout).until(
       EC.visibility_of_element_located(locator))
     # print(element.is_displayed())
@@ -48,7 +50,7 @@ class BasePage(object):
     element = WebDriverWait(self.driver, self.timeout).until(EC.visibility_of_element_located(by_locator))
     return element.is_enabled()
 
-  def is_element_existed(self,locator):
+  def is_element_existed(self, locator):
     existed = True
     try:
       WebDriverWait(self.driver, self.timeout).until(EC.visibility_of_element_located(locator))

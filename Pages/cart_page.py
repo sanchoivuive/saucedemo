@@ -1,12 +1,13 @@
-from Pages.base_page import BasePage
 from Locators.cart_locators import CartLocators
 from Objects.product import Product
+from Pages.base_page import BasePage
+
 
 class CartPage(BasePage):
   def __init__(self, driver):
     super().__init__(driver)
 
-  def get_product_info(self,index):
+  def get_product_info(self, index):
     name = self.get_text(CartLocators.LABEL_PRODUCT_NAME(index))
     desc = self.get_text(CartLocators.LABEL_PRODUCT_DESC(index))
     price = self.get_text(CartLocators.LABEL_PRODUCT_PRICE(index))

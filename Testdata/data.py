@@ -5,35 +5,43 @@ class PageData():
   CART_URL = 'https://www.saucedemo.com/cart.html'
   PAYMENT_INFO_URL = 'https://www.saucedemo.com/checkout-step-one.html'
 
+
 class PaymentInfoData():
   FIRSTNAME = 'Hello'
   LASTNAME = 'World'
   ZIPCODE = 99501
 
+
 class StandardUser():
   USERNAME = 'standard_user'
   PASSWORD = 'secret_sauce'
+
 
 class FakeUser():
   USERNAME = 'tienaaaa'
   PASSWORD = 'hello world'
 
+
 class ProblemUser():
   USERNAME = 'problem_user'
   PASSWORD = 'secret_sauce'
+
 
 class PerformanceGlitchUser():
   USERNAME = 'performance_glitch_user'
   PASSWORD = 'secret_sauce'
 
+
 class LockedoutUser():
   USERNAME = 'locked_out_user'
   PASSWORD = 'secret_sauce'
+
 
 class InvalidLoginMessage():
   INVALID_USER_MESSAGE = 'Username and password do not match any user in this service'
   USERNAME_REQUIRED_MESSAGE = 'Username is required'
   PASSWORD_REQUIRED_MESSAGE = 'Password is required'
+
 
 class Browser():
   CHROME = 'Chrome'
@@ -43,6 +51,7 @@ class Browser():
   SAFARI = 'Safari'
   PHANTOMJS = 'PhantomJS'
 
+
 class ItemInfo():
   NAME = 'Sauce Labs Backpack'
   DESC = 'carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection'
@@ -50,4 +59,3 @@ class ItemInfo():
   IMG_URL = 'https://www.saucedemo.com/img/sauce-backpack-1200x1500.jpg'
   BUTTON_ADD = 'ADD TO CART'
   BUTTON_REMOVE = 'REMOVE'
-

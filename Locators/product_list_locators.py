@@ -1,11 +1,12 @@
 from selenium.webdriver.common.by import By
 
+
 class ProductListLocators(object):
   BROKEN_IMAGE = (By.XPATH, '//img[contains(@src, "jpgWithGarbageOnItToBreakTheUrl")]')
   CART_ITEM = '//div[@class="inventory_list"]/div[@class="inventory_item"]['
-  CART_ITEM1 = (By.XPATH,'//div[@class="inventory_list"]/div[@class="inventory_item"]')
+  CART_ITEM1 = (By.XPATH, '//div[@class="inventory_list"]/div[@class="inventory_item"]')
 
-  MENU_HAMBURGER = (By.ID,'menu_button_container')
+  MENU_HAMBURGER = (By.ID, 'menu_button_container')
   CART_ICON = (By.XPATH, '//*[@id="shopping_cart_container"]')
   CART_AMOUNT = (By.XPATH, '//*[@id="shopping_cart_container"]/a/span')
 
